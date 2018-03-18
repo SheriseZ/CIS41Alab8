@@ -42,7 +42,7 @@ class UI:
                             if not (classQuart=="Spring" or classQuart == "Summer" or classQuart=="Fall" or classQuart=="Winter"):
                                 raise ValueError("Please enter a valid quarter!!! 'FALL, WINTER, SPRING, SUMMER only!'")
                             else:
-                                self.__class__.searchByQuart(classTopic.title(),classQuart)
+                                self.__class__.searchByTopicQuarter(classTopic.title(),classQuart)
                                 #print('choice #3')
                                 status = True
                         except ValueError as e2:
