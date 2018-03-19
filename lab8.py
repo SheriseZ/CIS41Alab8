@@ -24,12 +24,12 @@ class UI:
                     process = True                    
                 elif choice == 1:
                     classNum = input("Enter a class number: ")
-                    self.__class__.searchByNumber(classNum.upper())
+                    self._classes.searchByNumber(classNum.upper())
                     #print('choice #1')
                     print()
                 elif choice == 2:
                     classTopic = input("Enter a CIS topic: ")
-                    self.__class__.searchByTopic(classTopic.title())
+                    self._classes.searchByTopic(classTopic.title())
                     #print('choice #2')
                     print()
                 elif choice == 3:
@@ -42,7 +42,7 @@ class UI:
                             if not (classQuart=="Spring" or classQuart == "Summer" or classQuart=="Fall" or classQuart=="Winter"):
                                 raise ValueError("Please enter a valid quarter!!! 'FALL, WINTER, SPRING, SUMMER only!'")
                             else:
-                                self.__class__.searchByTopicQuarter(classTopic.title(),classQuart)
+                                self._classes.searchByTopicQuarter(classTopic.title(),classQuart)
                                 #print('choice #3')
                                 status = True
                         except ValueError as e2:
@@ -51,9 +51,6 @@ class UI:
             except ValueError as e1:
                 print()
                 print(str(e1))        
-                
-                
-
 
 app = UI()
 app.run()
