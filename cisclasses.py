@@ -3,6 +3,7 @@
 # Data stucture: A dictionary: key=classNumber; value=a list[classTitle, a list of 4 boolean[True,True,True,True]
 #ex: {"2":["Computer and Society",[True,True,True,True]]}
 
+
 import re
 FILE_NAME = "lab8_no_blankline.txt"
 
@@ -54,7 +55,7 @@ class CISclasseses:
                     print(self._classDict)
                     '''
                     
-                    if (classNum != None and className != None and quarterLIst != None) :                        
+                    if (classNum != None and className != None) :               # comfirm or don't need to?  
                         self._classDict[classNum] = [className, quarterLIst]
                     print(self._classDict)
                        
@@ -69,15 +70,55 @@ class CISclasseses:
 
     def searchByNumber(self, classNum) :
         '''  41A '''
-        if classNum in self._classDict :
-            print("CIS", classNum, self._classDict[classNum], quarter)
+        if classNum in self._classDict :        # if key in dict then print
+            print("CIS", classNum, self._classDict[classNum][0] + ":", 
+                  "Fall" if self._classDict[classNum][1][0] == True else "",
+                  "Winter" if self._classDict[classNum][1][1] == True else "", 
+                  "Spring" if self._classDict[classNum][1][2] == True else "", 
+                  "Summer" if self._classDict[classNum][1][3] == True else "")
         
     
     
-    #def searchByTopic(self, topic) :
+    def searchByTopic(self, topic) :
         
-    #def searchByTopicQuarter() :
+        
+        # iterator dict??? sequence?????????????
+        
+        for classNum, classList in sorted(self._classDict.items()) :   # traverse dict      # can we use sorted??????????????????
+            if topic in self._classDict[classNum][0] :      # if substr in str(value of the key) then print
+                print("CIS", classNum, self._classDict[classNum][0])
+                
+        
+    def searchByTopicQuarter(self, topic, quarter) :
+        
+        for classNum, classList in sorted(self._classDict.items()) :   # traverse dict      # can we use sorted??????????????????
+            if topic in self._classDict[classNum][0] :      # if substr in str(value of the key) then print
+                
+                if (quarter == "Fall" and self._classDict[classNum][1][0] == True) :
+                    print("CIS", classNum, self._classDict[classNum][0])
+                if (quarter == "Winter" and self._classDict[classNum][1][1] == True) :
+                    print("CIS", classNum, self._classDict[classNum][0])
+                if (quarter == "Spring" and self._classDict[classNum][1][2] == True) :
+                    print("CIS", classNum, self._classDict[classNum][0])
+                if (quarter == "Summer" and self._classDict[classNum][1][3] == True) :
+                    print("CIS", classNum, self._classDict[classNum][0])
+                
+                    
+                '''
+                print("CIS", classNum, self._classDict[classNum][0], 
+                      quarter if (quarter == "Fall" and self._classDict[classNum][1][0] == True) else "", 
+                      quarter if (quarter == "Winter" and self._classDict[classNum][1][1] == True) else "", 
+                      quarter if (quarter == "Spring" and self._classDict[classNum][1][2] == True) else "", 
+                      quarter if (quarter == "Summer" and self._classDict[classNum][1][3] == True) else "")
+                '''
+        
         
             
 
 classes = CISclasseses()
+print()
+classes.searchByNumber("170F")
+print()
+classes.searchByTopic("Java")     # unsolved; capitalize; alphabe sequence; error msg; java??, javascript??
+print()
+classes.searchByTopicQuarter("C++", "Spring")       # no need sequence here???????
