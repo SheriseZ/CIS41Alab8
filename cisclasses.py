@@ -8,8 +8,9 @@ import re
 FILE_NAME = "lab8_no_blankline.txt"
 
 
-class CISclasseses:
+class CISclasses :
     def __init__(self) :
+        '''contructor to read file and create a collection of class infomation'''
         try :
             with open(FILE_NAME) as infile :
                 self._classDict = {}                
@@ -69,7 +70,7 @@ class CISclasseses:
             raise SystemExit
 
     def searchByNumber(self, classNum) :
-        '''  41A '''
+        '''  a method to search classes by class number '''
         if classNum in self._classDict :        # if key in dict then print
             print("CIS", classNum, self._classDict[classNum][0] + ":", 
                   "Fall" if self._classDict[classNum][1][0] == True else "",
@@ -80,7 +81,7 @@ class CISclasseses:
     
     
     def searchByTopic(self, topic) :
-        
+        '''a method to search classes by class topic'''
         
         # iterator dict??? sequence?????????????
         
@@ -90,7 +91,7 @@ class CISclasseses:
                 
         
     def searchByTopicQuarter(self, topic, quarter) :
-        
+        '''a method to search classes by topic and quarters'''
         for classNum, classList in sorted(self._classDict.items()) :   # traverse dict      # can we use sorted??????????????????
             if topic in self._classDict[classNum][0] :      # if substr in str(value of the key) then print
                 
@@ -114,7 +115,7 @@ class CISclasseses:
         
         
             
-
+'''
 classes = CISclasseses()
 print()
 classes.searchByNumber("170F")
@@ -122,3 +123,4 @@ print()
 classes.searchByTopic("Java")     # unsolved; capitalize; alphabe sequence; error msg; java??, javascript??
 print()
 classes.searchByTopicQuarter("C++", "Spring")       # no need sequence here???????
+'''
