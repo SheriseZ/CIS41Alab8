@@ -1,72 +1,65 @@
 # lab 8
 # Zhubo Deng, Shiyu Zhang
-'''
-import re
-FILENAME1 = "lab8input.txt"
-FILENAME2 = "lab8_no_blankline.txt"
-
-class CISclasseses:
-    def __init__(self):
-        try:
-            with open(FILENAME2,'r') as fin:
-                for line in fin:
-                    line = line.strip()
-                    print(line)
-                    
-                    
-                    
-        except IOError as e1:
-            print(str(e1))
-            return None
-        
-    def searchByNumber(self,classNum):
-        
-    
-    def searchByTopic(self,classTopic):
-        
-    
-    def searchByTopicQuarter(self,topic,quarter):    
-        
-        
-# classes = CISclasseses()
-'''
+# Data stucture: A dictionary: key=classNumber; value=a list[classTitle, a list of 4 boolean[True,True,True,True]
+#ex: {"2":["Computer and Society",[True,True,True,True]]}
 
 import re
-FILE_NAME = "lab8input.txt"
+FILE_NAME = "lab8_no_blankline.txt"
 
 
 class CISclasseses:
     def __init__(self) :
         try :
             with open(FILE_NAME) as infile :
-                self._classDict = {}
+                self._classDict = {}                
                 for line in infile :
-                    line = line.rstrip()              # remove whitespace which is \n    
-                    #print(line)
+                    line = line.rstrip()              # remove whitespace which is \n                        
+                    
+                    classNum = None
+                    className = None
                     
                     if ">CIS " in line :
+                        
+                        # class number
                         print(line)
-                        classNum = re.search("CIS (\d+)(\w+)?", line)
-                        print(classNum.group())                        
-                        n = classNum.group()
-                        classNum = re.search("(\d+)(\w+)?", n)
-                        print(classNum.group())
+                        classNum = re.search("CIS (\d+(\w+)?)", line)
+                        print(classNum.group(1))                                                
+                        classNum = classNum.group(1)
+                        
+                        line = infile.readline()
+                        line = line.rstrip()
+                        print(line)
+                    
                         
                         # title
-                    if "html" in line :
                         print(line)
-                        className = re.search("^(Description\">)(\w+)(</a></td>)$", line)
-                        print(className.group())
+                        className = re.search("\">(.*)</[as]", line)    # </a> or </span>
+                        print(className.group(1))                        
+                        className = className.group(1)
                         
-                    #self._classDict[classNum] = className
                         
+                        # boolean: 4 QUARTERS
+                        #m = re.search("\w(?=<)",s2)
+                        quarterLIst = []
+                        for i in range(4) :
+                            line = infile.readline()
+                            line = line.rstrip()                            
+                            m = re.search(">(x)<", line)
+                            status = False if m==None else True
+                            quarterLIst.append(status)
+                            print(quarterLIst)
+                                         
+                    '''
+                    self._classDict[classNum] = className
+                    print(self._classDict)
+                    '''
+                    
+                    if (classNum != None and className != None and quarterLIst != None) :                        
+                        self._classDict[classNum] = [className, quarterLIst]
+                    print(self._classDict)
+                       
                         
-                        #lassNum = re.search("^(CIS )(\d+?\w+?)</string>)$", line)
-                        #m = classNum.group(1)
-                        #print(classNum)
-                        #_classDict[classNum] = 
-                        # nowrap;"><strong>CIS 2</strong>
-                        
+                      
                 
                 
                 
