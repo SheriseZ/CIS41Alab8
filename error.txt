@@ -1,0 +1,12 @@
+1. Search by number
+2. Search by topic
+3. Search by topic and quarter
+4. End search
+Enter a number: 2
+Enter a CIS topic: java
+CIS 35A Introduction to Java Programming
+CIS 35B Advanced Java Programming
+CIS 36A Introduction to Computer Programming in Java
+CIS 36B Intermediate Problem Solving in Java
+CIS 53 Java for Mobile Development
+CIS 89C Client-Side Programming with Javascript
