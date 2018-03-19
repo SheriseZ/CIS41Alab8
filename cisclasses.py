@@ -25,7 +25,7 @@ class CISclasseses:
     def searchByTopic(self,classTopic):
         
     
-    def searchByTopicQuarter(self):    
+    def searchByTopicQuarter(self,topic,quarter):    
         
         
 # classes = CISclasseses()
