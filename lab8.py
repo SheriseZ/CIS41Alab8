@@ -4,11 +4,12 @@
 # The app uses data from this CIS web page, which has been saved into a text file called lab8input.txt. 
 # The app lets the user look up CIS classes by entering a class number, or a CIS topic, or a CIS topic and a quarter.
 #from cisclasses import CISclasseses 
+from cisclasses import CISclasses 
 
 class UI:
     def __init__(self):
         '''constuctor for UI class, automatically create a cisclasses object'''
-        classes = cisclasses()
+        self._classes = CISclasses ()
         
     def run(self):
         '''run method displays menu and ask users for their choice'''
@@ -24,6 +25,7 @@ class UI:
                     process = True                    
                 elif choice == 1:
                     classNum = input("Enter a class number: ")
+                    
                     self._classes.searchByNumber(classNum.upper())
                     #print('choice #1')
                     print()
