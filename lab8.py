@@ -3,7 +3,9 @@
 # Write an application that helps a user look up CIS classes. 
 # The app uses data from this CIS web page, which has been saved into a text file called lab8input.txt. 
 # The app lets the user look up CIS classes by entering a class number, or a CIS topic, or a CIS topic and a quarter.
-#from cisclasses import CISclasseses 
+# Data stucture: A dictionary: key=classNumber; value=a list[classTitle, a list of 4 boolean[True,True,True,True]
+#ex: {"2":["Computer and Society",[True,True,True,True]]}
+
 from cisclasses import CISclasses 
 
 class UI:
